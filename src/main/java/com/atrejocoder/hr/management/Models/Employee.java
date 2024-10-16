@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +50,12 @@ public class Employee {
     @Column(name = "employment_status", nullable = false)
     @Enumerated(EnumType.STRING)
     private EmploymentStatus status;
+
+    @Column(name = "created_at", nullable = false)
+    private LocalTime createdAt;
+
+    @Column(name = "updated_at", nullable = false)
+    private LocalTime updated_at;
 
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<LeaveRequest> leaveRequests = new ArrayList<>();

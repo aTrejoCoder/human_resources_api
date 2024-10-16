@@ -7,11 +7,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 
 @Entity
 @NoArgsConstructor
 @Data
+@Table(name = "leave_request")
 public class LeaveRequest {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +36,12 @@ public class LeaveRequest {
     @Column(name = "status" , nullable = false)
     @Enumerated(EnumType.STRING)
     private LeaveStatus status;
+
+    @Column(name = "created_at", nullable = false)
+    private LocalTime createdAt;
+
+    @Column(name = "updated_at", nullable = false)
+    private LocalTime updated_at;
 
     @Column(name = "reason")
     private String reason;

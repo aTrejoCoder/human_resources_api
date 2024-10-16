@@ -5,10 +5,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Data
 @NoArgsConstructor
+@Table(name = "performance_review")
 public class PerformanceReview {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,4 +31,10 @@ public class PerformanceReview {
 
     @Column(name = "ratings", nullable = false)
     private int rating; // Rating from 1 to 5
+
+    @Column(name = "created_at", nullable = false)
+    private LocalTime createdAt;
+
+    @Column(name = "updated_at", nullable = false)
+    private LocalTime updated_at;
 }
